@@ -112,7 +112,7 @@ body {
 .sites {
     background-color: yellow;
     padding: 10px 20px;
-    width: fit-content;
+    width: 800px;
     margin: 20px auto;
     text-align: center;
     border: 1px solid yellow;
