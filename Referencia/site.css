@@ -1,0 +1,28 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.topo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.linha {
+    margin-top: 15px;
+}
+
+.imagens {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+.rodape {
+    margin: auto;
+    padding: auto;
+}
+
