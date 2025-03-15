@@ -1,0 +1,192 @@
+/* Coloque aqui seu estilo css: */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.links ul {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    padding: auto;
+}
+
+.links ul li {
+    display: inline;
+    text-align: center;
+}
+
+.links ul li a:link {
+    color: grey;
+    text-decoration: none;
+}
+
+.links ul li a:visited {
+    color: grey;
+}
+
+.assine {
+    background-color: red;    
+    color: white;
+    border: 2px solid red;
+}
+
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: grey;
+}
+
+.inicio hr {
+    width: 250px;
+    color: grey;
+    display: flex;
+    align-self: flex-end;
+}
+
+
+.sites ul li {
+    display: inline
+}
+
+.sites ul li a {
+    color: grey;
+    text-decoration: none;
+    padding: auto;
+}
+
+.not1 {
+    color: red;
+}
+
+.not1 a:link {
+    color: red;
+    text-decoration: none;
+}
+
+.not1 a:visited {
+    color: red;
+}
+
+.not1 a:hover {
+    color: grey;
+}
+
+.not2 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.not2 img {
+    width: 500px;
+}
+
+.texto1 {
+    background-color: red;
+    border: 2px solid red;
+    display: flex;
+    justify-content: left;
+    margin: auto;
+    block-size: 100px;
+    writing-mode: horizontal-tb;
+    width: 800px;
+}
+
+.texto1 h3 a:link {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.texto1 h3 a:visited, a:hover {
+    color: white;
+}
+
+.texto1 p {
+    color: white;
+    font-size: 15px;
+}
+
+.not3 {
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+    align-items: space-between;
+}
+
+.not4 {
+    display: flex;
+    justify-content: end;
+
+}
+
+
+
+
+.play {
+    background-color: rgb(107, 107, 107);
+    color: white;
+}
+
+.play ul {
+    display: list-item;
+    flex-wrap: wrap-reverse;
+
+}
+
+footer .esquerda {
+    position: relative;
+    left: 30px;
+    color: grey;
+    font-size: 15px;
+}
+
+footer .esquerda img {
+    width: 100px;
+    height: 50px;
+}
+
+footer .esquerda hr {
+    width: 350px;
+    display: flex;
+    align-self: flex-start;
+}
+
+footer .centroesquerda {
+    position: relative;
+    color: grey;
+    left: 400px;
+    bottom: 180px;
+    font-size: 15px;
+}
+
+footer .centroesquerda hr {
+    width: 150px;
+    align-self: center;
+}
+
+footer .centrodireita {
+    position: relative;
+    color: grey;
+    left: 800px;
+    bottom: 360px;
+    font-size: 15px;
+}
+
+footer .centrodireita a {
+    color: grey;
+    text-decoration: none;
+}
+
+footer .centrodireita hr {
+    width: 150px;
+}
+
+footer .esquerda {
+    position: relative;
+
+}
