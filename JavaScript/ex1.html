@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execício 1</title>
+
+    <link rel="stylesheet" href="teste.css">
+</head>
+
+<body>
+
+    <input type="button" value="Clique!" onclick="gerarNumero()">
+    <p id="numero">Clique no botão para gerar um número aleatório.</p>
+
+    <script>
+        function gerarNumero() {
+            var numero = Math.floor(Math.random() * 51);
+            document.getElementById('numero').textContent = "Número gerado: " + numero;
+        }
+    </script>
+</body>
+
+</html>
