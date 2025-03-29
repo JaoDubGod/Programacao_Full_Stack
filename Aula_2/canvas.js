@@ -1,4 +1,6 @@
-let canvas = document.getElementById('canvas1');
+// Início primeira Imgem
+
+let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
 // quadrado azul
@@ -213,3 +215,71 @@ ctx.lineWidth = 2;
 ctx.strokeStyle = 'black';
 ctx.strokeRect(0,0,300,300);
 ctx.closePath();
+
+// Final primeira imagem
+
+// Início segunda imagem
+
+let canvas2 = document.getElementById('canvas2');
+let ctx2 = canvas2.getContext('2d');
+
+
+// terreno
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'grey';
+ctx2.strokeStyle = 'grey';
+ctx2.fillRect(0,200,300,300);
+ctx2.strokeRect(0,200,300,300);
+ctx2.closePath();
+
+// lago azul
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'dodgerblue';
+ctx2.strokeStyle = 'dodgerblue';
+ctx2.fillRect(0,190,55,170);
+ctx2.strokeRect(0,200,55,170);
+ctx2.closePath();
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'dodgerblue';
+ctx2.strokeStyle = 'dodgerblue';
+ctx2.fillRect(0,260,170,50);
+ctx2.strokeRect(0,260,170,50);
+ctx2.closePath();
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.strokeStyle = 'dodgerblue';
+ctx2.arc(130,300,70,1.*Math.PI,1*Math.PI);
+ctx2.stroke();
+ctx2.closePath();
+
+// sol
+ctx2.beginPath();
+ctx.lineWidth = 1;
+ctx2.fillStyle = "yellow";
+ctx2.arc(230, 70, 30, 0, 2*Math.PI);
+ctx2.fill();
+ctx2.closePath();
+
+// árvores
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'brown';
+ctx2.strokeStyle = 'brown';
+ctx2.fillRect(60,150,20,50);
+ctx2.strokeRect(60,150,20,50);
+ctx2.closePath();
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'brown';
+ctx2.strokeStyle = 'brown';
+ctx2.fillRect(250,200,20,50);
+ctx2.strokeRect(250,200,20,50);
+ctx2.closePath();
+
