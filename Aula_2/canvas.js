@@ -262,7 +262,7 @@ ctx2.closePath();
 ctx2.beginPath();
 ctx.lineWidth = 1;
 ctx2.fillStyle = "yellow";
-ctx2.arc(230, 70, 30, 0, 2*Math.PI);
+ctx2.arc(230,70,30,0,2*Math.PI);
 ctx2.fill();
 ctx2.closePath();
 
@@ -281,5 +281,14 @@ ctx2.fillStyle = 'brown';
 ctx2.strokeStyle = 'brown';
 ctx2.fillRect(250,200,20,50);
 ctx2.strokeRect(250,200,20,50);
+ctx2.closePath();
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'green';
+ctx2.strokeStyle = 'green';
+ctx2.arc(250,200,20,0,2*Math*PI);
+ctx2.fill();
+ctx2.stroke();
 ctx2.closePath();
 
