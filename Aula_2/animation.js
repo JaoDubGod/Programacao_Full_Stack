@@ -5,12 +5,12 @@ let ctx = canvas.getContext('2d');
 let bola = {
     x: 150,
     y: 150,
-    raio: 250,
+    raio: 15,
     img: new Image(),
     desenha: function(){
-        this.img.src = 'bola(1).png';
+        this.img.src = 'bola.png';
         ctx.beginPath();
-        ctx.drawImage(this.img, this.x, this.y, 2*this.raio, 2*this.raio);
+        ctx.drawImage(this.img, this.x - this.raio, this.y - this.raio, 2*this.raio, 2*this.raio);
         ctx.closePath();
     }
 }
