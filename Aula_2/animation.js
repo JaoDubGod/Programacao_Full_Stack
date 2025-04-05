@@ -30,4 +30,22 @@ document.addEventListener('mousemove',function(evento){
     console.log(x_mouse,y_mouse);
     bola.x = x_mouse;
     bola.y = y_mouse;
+
+    let r = bola.raio;
+
+    if (x_mouse < r) {
+        bola.x = r;
+    } else if (x_mouse > 300 - 2*r) {
+        bola.x = 300 - r;
+    } else {
+        bola.x = x_mouse;
+    }
+
+    if (y_mouse < r) {
+        bola.y = r;
+    } else if (y_mouse > 300 - 2*r) {
+        bola.y = 300 - r;
+    } else {
+        bola.y = y_mouse;
+    }
 })
