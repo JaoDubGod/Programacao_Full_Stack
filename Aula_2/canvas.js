@@ -254,15 +254,24 @@ ctx2.closePath();
 ctx2.beginPath();
 ctx2.lineWidth = 1;
 ctx2.strokeStyle = 'dodgerblue';
-ctx2.arc(130,300,70,1.*Math.PI,1*Math.PI);
+ctx2.arc(170,320,60,0,2*Math.PI);
+ctx2.fill();
+ctx2.stroke();
+ctx2.closePath();
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.strokeStyle = 'dodgerblue';
+ctx2.arc(-5,205,62,0,2*Math.PI);
+ctx2.fill();
 ctx2.stroke();
 ctx2.closePath();
 
 // sol
 ctx2.beginPath();
-ctx.lineWidth = 1;
+ctx2.lineWidth = 1;
 ctx2.fillStyle = "yellow";
-ctx2.arc(230,70,30,0,2*Math.PI);
+ctx2.arc(230,70,40,0,2*Math.PI);
 ctx2.fill();
 ctx2.closePath();
 
@@ -287,8 +296,67 @@ ctx2.beginPath();
 ctx2.lineWidth = 1;
 ctx2.fillStyle = 'green';
 ctx2.strokeStyle = 'green';
-ctx2.arc(250,200,20,0,2*Math*PI);
+ctx2.arc(260,190,25,0,2*Math.PI);
 ctx2.fill();
 ctx2.stroke();
 ctx2.closePath();
 
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'green';
+ctx2.strokeStyle = 'green';
+ctx2.arc(70,145,25,0,2*Math.PI);
+ctx2.fill();
+ctx2.stroke();
+ctx2.closePath();
+
+// casa
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'peru';
+ctx2.strokeStyle = 'peru';
+ctx2.fillRect(120,110,80,90);
+ctx2.strokeRect(120,110,80,90);
+ctx2.closePath();
+
+// porta
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'brown';
+ctx2.strokeStyle = 'brown';
+ctx2.fillRect(150,150,20,50);
+ctx2.strokeRect(150,150,20,50);
+ctx2.closePath();
+
+// janelas
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'lightblue';
+ctx2.strokeStyle = 'lightblue';
+ctx2.fillRect(127,127,23,23);
+ctx2.strokeRect(127,127,23,23);
+ctx2.closePath();
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'lightblue';
+ctx2.strokeStyle = 'lightblue';
+ctx2.fillRect(168,127,23,23);
+ctx2.strokeRect(168,127,23,23);
+ctx2.closePath();
+
+// telhado
+
+ctx2.beginPath();
+ctx2.lineWidth = 1;
+ctx2.fillStyle = 'coral';
+ctx2.strokeStyle = 'coral';
+ctx2.moveTo(120,110);
+ctx2.lineTo(200, 110);
+ctx2.lineTo(160, 70);
+ctx2.fill();
+ctx2.stroke();
+ctx2.closePath();
