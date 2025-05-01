@@ -1,8 +1,13 @@
 body {
     background-color: aquamarine;
+    text-align: center;
 }
 
-#numero {
+#digite {
+    font-size: 20px;
     justify-content: center;
     align-items: center;
+    border: 3px solid white;
+    border-radius: 8px;
+    background-color: antiquewhite;
 }
