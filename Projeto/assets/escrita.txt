@@ -1,1 +1,0 @@
-Arquivo para guardar as imagens utilizadas no JS
