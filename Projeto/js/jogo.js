@@ -1,0 +1,1 @@
+const scoreDisplay = document.getElementById('pontos')
