@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Adivinhação</title>
 
     <link rel="stylesheet" href="guess.css">
 </head>
 <body>
-    <p id="digite">Digite um número aleatório: <input type = “text” id = “numero1”></p>
+    <h2>Adivinhando</h2>
+    <form action="">
+        <input type="number" name="" id="ipNum">
+        <button onclick="adNum(event)">Adivinhar número</button>
+    </form>
+    <div id="resultado"></div>
 
-    <script src="guess.js" type="text"></script>
+    <script src="guess.js"></script>
 </body>
 </html>
