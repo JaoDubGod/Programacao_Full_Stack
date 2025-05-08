@@ -9,5 +9,15 @@ body {
 /* Formatando a class da div */
 .game {
     display: grid; /* Arrumando o display para modo gradeado */
-    
+    width: 800px; /* 40*20 */
+    height: 800px; /* 40*20 */
+    border: solid grey; /* Criando a bora do tabuleiro */
+}
+
+/* Utilizando a div criada no js */
+.game div {
+    width: 20px;
+    height: 20px;
+    border: solid lightblue;
+    box-sizing: border-box; /* Calculando as dimensões de um elemento  */
 }
