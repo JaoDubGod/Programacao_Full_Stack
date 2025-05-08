@@ -1,23 +1,29 @@
-/* Formatação do corpo do site */ 
-body {
-    font-family: Arial, Helvetica, sans-serif; /* Alterando a fonte do site*/
-    display: flex; /* Arrumando o display para modo flexível */
-    flex-direction: column; /* Alterando a direção dos itens para coluna */
-    align-items: center; /* Alinhando os itens no centro do corpo*/
-}
-
 /* Formatando a class da div */
 .game {
-    display: grid; /* Arrumando o display para modo gradeado */
     width: 800px; /* 40*20 */
     height: 800px; /* 40*20 */
     border: solid grey; /* Criando a bora do tabuleiro */
+    display: flex; /* Colocando o display flexível */
+    flex-wrap: wrap; /* Faz a quebra de linha assim que um dos items não puder ser mais compactado */
 }
 
 /* Utilizando a div criada no js */
 .game div {
     width: 20px;
     height: 20px;
-    border: solid lightblue;
+}
+
+.pac-dot {
+    background-color: darkgreen;
+    border: 5px solid white;
     box-sizing: border-box; /* Calculando as dimensões de um elemento  */
+}
+
+.parede {
+    background-color: darkblue;
+}
+
+.power-pellet {
+    background-color: darkgreen;
+    border-radius: 10px; /* Adicionando um raio ao quadrado */
 }
