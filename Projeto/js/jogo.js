@@ -43,5 +43,7 @@ const layout = [
 
 // Criando o tabuleiro
 function createTabu() {
-    for (let i = 0; i < layout.length; i++) {}
+    for (let i = 0; i < layout.length; i++) {
+        const quadrado = document.createElement('div') // Criando a 
+    }
 }
