@@ -65,37 +65,3 @@ img {
 p {
     color: #064d5796;
 }
-.proje {
-    font-size: 50px;
-    margin: 50 0 50 0;
-    text-align: center;
-    color: green;
-}
-
-table {
-    width: 50%;
-    border-collapse: collapse;
-    margin: auto;
-}
-
-td, th {
-    padding: 10px;
-    text-align: center;
-    border: 4px inset #9deed3;
-}
-
-th {
-    background-color: #06ce17;
-    color: white;
-    font-size: 15px;
-}
-
-td {
-    color: rgb(12, 163, 12);
-    font-size: 14px;
-}
-
-td a:hover {
-    text-decoration: none;
-    color: rgb(12, 163, 12);
-}
