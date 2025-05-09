@@ -1,0 +1,18 @@
+/* body {
+    background-color: black;
+} */
+
+.circulo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+#canvas {
+    background-color: white;
+}
+
+#canvas2 {
+    background-color: aquamarine;
+}
