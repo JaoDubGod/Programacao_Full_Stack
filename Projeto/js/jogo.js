@@ -17,7 +17,7 @@ const layout = [
     1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 2, 2, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
-    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4,
     1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
@@ -157,5 +157,34 @@ function nAssustaFantasma() {
 // Criando os fantasmas usando constructor
 // Classe fantasma
 class fantasma {
-    constructor
+    // Método especial que é chamado automaticamente quando cria um novo objeto
+    constructor(nomeClasse, fmInicio, velocidade) {
+        this.nomeClasse = nomeClasse
+        this.fmInicio = fmInicio
+        this.velocidade = velocidade
+        this.atualPosi = fmInicio
+        this.taAssustado = false
+        this.timerId = NaN
+    }
+}
+
+// Todos os fantasmas
+// Adicionando eles usando a class fantasma
+const fantasmas = [
+    new fantasma("shadow", 582, 250),
+    new fantasma("speedy", 580, 400),
+    new fantasma("bashful", 497, 300),
+    new fantasma("pokey", 502, 500),
+]
+
+// Desenhando os fantasmas dentro do tabuleiro
+fantasmas.forEach(fantasma => quadrados[fantasma.fmInicio].classList.add(fantasma.nomeClasse, "fantasma"))
+
+// Movendo eles aleatoriamente
+fantasmas.forEach(fantasma => andaFantasma(fantasma))
+
+// Criando função andaFantasma
+function andaFantasma(fantasma) {
+    const direcoes = [-1, 1, width, -width]
+    let direcao = direcoes[Math.floor(Math.random() * direcoes.length)]
 }
