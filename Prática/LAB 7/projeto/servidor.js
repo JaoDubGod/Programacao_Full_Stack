@@ -20,3 +20,5 @@ server.listen(80);
 
 // mensagem exibida no console para debug
 console. log("servidor rodandodo..." ) ;
+
+// IP: 10.102.6.123
