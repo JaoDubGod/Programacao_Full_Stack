@@ -1,3 +1,7 @@
+body {
+    background-color: black;
+}
+
 /* Formatando a class da div */
 .game {
     width: 800px; /* 40*20 */
@@ -15,7 +19,7 @@
 
 .pac-dot {
     background-color: darkgreen;
-    border: 5px solid white;
+    border: 5px solid black;
     box-sizing: border-box; /* Calculando as dimensões de um elemento  */
 }
 
@@ -26,4 +30,29 @@
 .power-pellet {
     background-color: darkgreen;
     border-radius: 10px; /* Adicionando um raio ao quadrado */
+}
+
+.shadow {
+    background-color: darkred;
+}
+
+.speedy {
+    background-color: #AA336A; /* Cor: dark pink */
+}
+
+.bashful {
+    background-color: darkcyan;
+}
+
+.pokey {
+    background-color: darkorange;
+}
+
+.pac-man {
+    background-color: #8B8000; /* Cor: dark yellow */
+    border-radius: 10px;
+}
+
+.fantasma-assustado {
+    background-color: aqua;
 }
