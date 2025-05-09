@@ -69,4 +69,5 @@ createTabu() // Chamando a função para construir o tabuleiro
 
 // Criando personagens
 // Desenhando o Pac-Man dentro do tabuleiro
-
+let pmInicio = 694 // Localização inicial do Pac-Man
+quadrados[pmInicio].classList.add("pac-man")
