@@ -187,4 +187,20 @@ fantasmas.forEach(fantasma => andaFantasma(fantasma))
 function andaFantasma(fantasma) {
     const direcoes = [-1, 1, width, -width]
     let direcao = direcoes[Math.floor(Math.random() * direcoes.length)]
+
+    fantasma.timerId = setInterval(function() {
+        // Se o próximo quadrado que o fantasma for não tem fantasma e não é parede
+        if (
+            !quadrados[fantasma.fmInicio + direcao].classList.contains("fantasma") &&
+            !quadrados[fantasma.fmInicio + direcao].classList.contains("parede")
+        ) {
+            quadrados[fantasma.fmInicio].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado")
+            fantasma.fmInicio += direcao
+            quadrados[fantasma.fmInicio].classList.add(fantasma.nomeClasse, "fantasma")
+        }
+    })
 }
+
+
+
+
