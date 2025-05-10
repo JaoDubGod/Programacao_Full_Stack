@@ -1,6 +1,7 @@
 let canvas = document.getElementById('mouse');
 let ctx = canvas.getContext('2d');
 
+let mouseDentro = false
 
 let bola = {
     x: 150,
@@ -23,7 +24,17 @@ function animacao(){
 
 animacao();
 
+canvas.addEventListener('mouseenter', () => {
+    mouseDentro = true;
+});
+
+canvas.addEventListener('mouseleave', () => {
+    mouseDentro = false;
+});
+
 document.addEventListener('mousemove',function(evento){
+    if (!mouseDentro) return;
+
     let rect = canvas.getBoundingClientRect();
     let x_mouse = evento.clientX - rect.left;
     let y_mouse = evento.clientY - rect.top;
