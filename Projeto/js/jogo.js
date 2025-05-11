@@ -132,7 +132,7 @@ document.addEventListener("keyup", mvPM)
 // Comendo o pac-dot
 function comePD() {
     if (quadrados[pmInicio].classList.contains("pac-dot")) {
-        pontos ++ // Aumenta os pontos
+        pontos++ // Aumenta os pontos
         pontosDisplay.innerHTML = pontos // Substitui pelo novo valor
         quadrados[pmInicio].classList.remove("pac-dot") // Remove os pac-dots
     }
@@ -156,7 +156,7 @@ function nAssustaFantasma() {
 
 // Criando os fantasmas usando constructor
 // Classe fantasma
-class fantasma {
+class Fantasma {
     // Método especial que é chamado automaticamente quando cria um novo objeto
     constructor(nomeClasse, fmInicio, velocidade) {
         this.nomeClasse = nomeClasse
@@ -171,36 +171,78 @@ class fantasma {
 // Todos os fantasmas
 // Adicionando eles usando a class fantasma
 const fantasmas = [
-    new fantasma("shadow", 582, 250),
-    new fantasma("speedy", 580, 400),
-    new fantasma("bashful", 497, 300),
-    new fantasma("pokey", 502, 500),
+    new Fantasma("shadow", 582, 250),
+    new Fantasma("speedy", 580, 400),
+    new Fantasma("bashful", 497, 300),
+    new Fantasma("pokey", 502, 500),
 ]
 
 // Desenhando os fantasmas dentro do tabuleiro
-fantasmas.forEach(fantasma => quadrados[fantasma.fmInicio].classList.add(fantasma.nomeClasse, "fantasma"))
+fantasmas.forEach(fantasma => quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma"))
 
 // Movendo eles aleatoriamente
-fantasmas.forEach(fantasma => andaFantasma(fantasma))
+fantasmas.forEach(fantasma => moverFantasma(fantasma))
 
 // Criando função andaFantasma
-function andaFantasma(fantasma) {
+function moverFantasma(fantasma) {
     const direcoes = [-1, 1, width, -width]
+    // Definindo uma direção inicial aletória
     let direcao = direcoes[Math.floor(Math.random() * direcoes.length)]
 
-    fantasma.timerId = setInterval(function() {
+
+    fantasma.timerId = setInterval(function () {
         // Se o próximo quadrado que o fantasma for não tem fantasma e não é parede
         if (
-            !quadrados[fantasma.fmInicio + direcao].classList.contains("fantasma") &&
-            !quadrados[fantasma.fmInicio + direcao].classList.contains("parede")
+            !quadrados[fantasma.atualPosi + direcao].classList.contains("parede") &&
+            !quadrados[fantasma.atualPosi + direcao].classList.contains("fantasma")
         ) {
-            quadrados[fantasma.fmInicio].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado")
-            fantasma.fmInicio += direcao
-            quadrados[fantasma.fmInicio].classList.add(fantasma.nomeClasse, "fantasma")
+            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado")
+            fantasma.atualPosi += direcao
+            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma")
         }
-    })
+        // Se não, procura uma nova direção aleatória para ir
+        else direcao = direcoes[Math.floor(Math.random() * direcoes.length)]
+
+        // Se o fantasmas estiver assustado
+        if (fantasma.taAssustado) {
+            quadrados[fantasma.atualPosi].classList.add("fantasma-assustado")
+        }
+
+        // Se o fantasma estiver assustado e o Pac-Man estiver perto
+        if (fantasma.taAssustado && quadrados[fantasma.atualPosi].classList.contains("pac-man")) {
+            fantasma.taAssustado = false
+            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado")
+            fantasma.atualPosi = fantasma.fmInicio
+            pontos += 100
+            pontosDisplay.innerHTML = pontos
+            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma")
+        }
+        olhaGO()
+    }, fantasma.velocidade)
 }
 
+// Olhando se houve Game Over
 
+function olhaGO() {
+    if (
+        quadrados[pmInicio].classList.contains("fantasma") &&
+        !quadrados[pmInicio].classList.contains("fantasma-assustado")) {
+        fantasmas.forEach(fantasma => clearInterval(fantasma.timerId))
+        document.removeEventListener("keyup", mvPM)
+        setTimeout(function () {
+            alert("Game Over")
+        }, 500)
+    }
+}
 
-
+// Olhando se houve vitória
+function olhaVT() {
+    // Coloando uma quantidade de pontos aleatória (pode alterar)
+    if (pontos >= 500) {
+        fantasmas.forEach(fantasma => clearInterval(fantasma.timerId))
+        document.removeEventListener("keyup", mvPM)
+        setTimeout(function () {
+            alert("Você Ganhou!!!")
+        }, 500)
+    }
+}
