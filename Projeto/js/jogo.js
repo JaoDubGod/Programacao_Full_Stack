@@ -155,7 +155,7 @@ function nAssustaFantasma() {
 }
 
 // Criando os fantasmas usando constructor
-// Classe fantasma
+// Classe Fantasma
 class Fantasma {
     // Método especial que é chamado automaticamente quando cria um novo objeto
     constructor(nomeClasse, fmInicio, velocidade) {
@@ -238,7 +238,7 @@ function olhaGO() {
 // Olhando se houve vitória
 function olhaVT() {
     // Coloando uma quantidade de pontos aleatória (pode alterar)
-    if (pontos >= 500) {
+    if (pontos >= 250) {
         fantasmas.forEach(fantasma => clearInterval(fantasma.timerId))
         document.removeEventListener("keyup", mvPM)
         setTimeout(function () {

@@ -1,13 +1,44 @@
 body {
     background-color: black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
+h3 {
+    color: white;
+}
+
+/* Alinhando botões */
+.botao {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* Estilizando botões */
+a.bta {
+    display: inline-block;
+    padding: 20px 25px;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: rgb(44, 44, 44);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Alterando a cor ao passar o mouse */
+a.bta:hover {
+    background-color: grey;
+}
 
 /* Formatando a class da div */
 .game {
     width: 800px; /* 40*20 */
     height: 800px; /* 40*20 */
-    border: solid grey; /* Criando a bora do tabuleiro */
     display: flex; /* Colocando o display flexível */
     flex-wrap: wrap; /* Faz a quebra de linha assim que um dos items não puder ser mais compactado */
 }
