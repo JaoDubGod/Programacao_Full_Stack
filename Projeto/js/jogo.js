@@ -85,8 +85,8 @@ function mvPM(event) {
             ) {
                 pmInicio -= 1 // Se todas forem verdade, move-se para esquerda
             }
-            if ((pmInicio - 1) === 400) {
-                pmInicio = 360;  // Se teletransporta de esquerda para direita
+            if ((pmInicio - 1) === 360) {
+                pmInicio = 400;  // Se teletransporta de esquerda para direita
             }
             break
         case "ArrowUp":
@@ -106,8 +106,8 @@ function mvPM(event) {
             ) {
                 pmInicio += 1 // Se todas forem verdade, move-se para direita
             }
-            if ((pmInicio + 1) === 360) {
-                pmInicio = 400; // Se teletransporta da direita para esquerda
+            if ((pmInicio + 1) === 400) {
+                pmInicio = 360; // Se teletransporta da direita para esquerda
             }
             break
         case "ArrowDown":
