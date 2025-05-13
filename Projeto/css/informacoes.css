@@ -5,9 +5,10 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 20px;
+    text-align: center;
 }
 
-.desen {
+#desen {
     font-family: 'Times New Roman', Times, serif;
     color: wheat;
     border: 4px solid rgb(44, 44, 44);
@@ -17,7 +18,17 @@ body {
     margin: 20px;
 }
 
+#desenFoto {
+    border-radius: 20px;
+    height: 250px;
+    margin: 20px;
+    margin-right: 40px;
+}
 
+p {
+    max-width: 600px;
+    word-wrap: break-word;
+}
 
 /* Alinhando botões */
 .botao {

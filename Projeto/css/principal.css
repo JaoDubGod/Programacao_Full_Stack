@@ -28,6 +28,11 @@ body {
     text-align: center;
 }
 
+p {
+    max-width: 600px;
+    word-wrap: break-word;
+}
+
 
 /* Alinhando botões */
 .botao {
