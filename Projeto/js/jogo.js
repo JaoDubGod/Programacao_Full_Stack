@@ -193,8 +193,8 @@ function moverFantasma(fantasma) {
     fantasma.timerId = setInterval(function () {
         // Se o próximo quadrado que o fantasma for não tem fantasma e não é parede
         if (
-            !quadrados[fantasma.atualPosi + direcao].classList.contains("parede") &&
-            !quadrados[fantasma.atualPosi + direcao].classList.contains("fantasma")
+            !quadrados[fantasma.atualPosi + direcao].classList.contains("parede") && // Verifica se a próxima posição do fantasma for em direção a parede
+            !quadrados[fantasma.atualPosi + direcao].classList.contains("fantasma") // E em direção à uma fantasma
         ) {
             quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado")
             fantasma.atualPosi += direcao
@@ -211,11 +211,11 @@ function moverFantasma(fantasma) {
         // Se o fantasma estiver assustado e o Pac-Man estiver perto
         if (fantasma.taAssustado && quadrados[fantasma.atualPosi].classList.contains("pac-man")) {
             fantasma.taAssustado = false
-            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado")
-            fantasma.atualPosi = fantasma.fmInicio
-            pontos += 100
-            pontosDisplay.innerHTML = pontos
-            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma")
+            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado") // Se o Pac-Man passar pelo fantasma e ele estiver assustado
+            fantasma.atualPosi = fantasma.fmInicio // Retorna o fantasma para sua posição inicial
+            pontos += 100 // Adiciona mais 100 pontos ao jogador
+            pontosDisplay.innerHTML = pontos // Altera a quantidade de pontos
+            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma") // Recoloca o fantasma para andar pelo mapa
         }
         olhaGO()
     }, fantasma.velocidade)
@@ -238,7 +238,7 @@ function olhaGO() {
 // Olhando se houve vitória
 function olhaVT() {
     // Coloando uma quantidade de pontos aleatória (pode alterar)
-    if (pontos >= 250) {
+    if (pontos >= 400) {
         fantasmas.forEach(fantasma => clearInterval(fantasma.timerId))
         document.removeEventListener("keyup", mvPM)
         setTimeout(function () {
