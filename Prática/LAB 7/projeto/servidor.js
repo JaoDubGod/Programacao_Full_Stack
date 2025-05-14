@@ -8,7 +8,7 @@ let mongodb = require("mongodb");
 
 const MongoClient = mongodb.MongoClient;
 const uri = "mongodb+srv://dbUser:uMEFDkOU80TeQs8q@cluster0.jiatwwx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const client = new MongoClient(uri);
 
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: false}));
