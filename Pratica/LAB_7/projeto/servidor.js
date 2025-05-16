@@ -66,7 +66,7 @@ app.get("/for_ejs",function(requisicao, resposta){
     resposta.render("divs",{valor});
 })
 
-app.post('/logar', function(requisicao, resposta){
+app.post('/login', function(requisicao, resposta){
     let login = requisicao.body.login;
     let senha = requisicao.body.senha;
     console.log(login, senha);
