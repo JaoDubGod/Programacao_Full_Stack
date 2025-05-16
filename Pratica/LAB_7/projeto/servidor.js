@@ -5,7 +5,7 @@ var bodyParser = require("body-parser")
 var mongodb = require("mongodb");
 
 const MongoClient = mongodb.MongoClient;
-const uri = `mongodb+srv://dbUser:uMEFDkOU80TeQs8q@cluster0.jiatwwx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = `mongodb+srv://unifjmonti:HtKXKkuUL2AiZKRj@tentativa.kbjzkcs.mongodb.net/?retryWrites=true&w=majority&appName=Tentativa`;
 const client = new MongoClient(uri);
 
 var dbo = client.db("exemplo_bd");
@@ -27,11 +27,11 @@ console.log("Servidor rodando ...".rainbow);
 // Métodos e actions
 
 app.get("/inicio", function(requisicao, resposta){
-    resposta.redirect("Aula_1/index.html")
+    resposta.redirect("../Aula_1/projects.html")
 })
 
 app.post("/inicio", function(requisicao, resposta){
-    resposta.redirect("Aula_1/index.html")
+    resposta.redirect("../Aula_1/projects.html")
 })
 
 app.get("/cadastrar", function(requisicao, resposta){
