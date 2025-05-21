@@ -9,6 +9,8 @@ body {
 
 h3 {
     color: wheat;
+    margin: 0;
+    padding: 0;
 }
 
 /* Alinhando botões */
@@ -41,6 +43,7 @@ a.bta:hover {
     height: 800px; /* 40*20 */
     display: flex; /* Colocando o display flexível */
     flex-wrap: wrap; /* Faz a quebra de linha assim que um dos items não puder ser mais compactado */
+    margin-bottom: 5px;
 }
 
 /* Utilizando a div criada no js */

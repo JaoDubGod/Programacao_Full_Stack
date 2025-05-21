@@ -129,7 +129,7 @@ function mvPM() {
     if (pmDirecao === 1) {
         proximaPosi = pmInicio - 1; // Move-se para esquerda
         // Altera da borda esquerda para borda direita
-        if (pmInicio % whidh === 0) {
+        if (pmInicio % width === 0) {
             proximaPosi = pmInicio + width - 1;
         }
     }
@@ -192,16 +192,16 @@ function inMov(nwDire) {
 function mvPMTeclado(event) {
     switch (event.key) {
         case 'ArrowLeft':
-            iniciarMovimento(1); // 1: irá para esquerda
+            inMov(1); // 1: irá para esquerda
             break;
         case 'ArrowUp':
-            iniciarMovimento(2); // 2: irá para cima
+            inMov(2); // 2: irá para cima
             break;
         case 'ArrowRight':
-            iniciarMovimento(3); // 3: irá para direita
+            inMov(3); // 3: irá para direita
             break;
         case 'ArrowDown':
-            iniciarMovimento(4); // 4: irá para baixo
+            inMov(4); // 4: irá para baixo
             break;
     }
 }
@@ -315,4 +315,4 @@ function olhaVT() {
 }
 
 // Inicia o jogo quando a página carrega
-window.onload = startGame;
+window.onload = iniciaJogo;
