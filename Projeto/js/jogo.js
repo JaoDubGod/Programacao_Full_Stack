@@ -1,8 +1,10 @@
+// Constantes e variáveis globais
 const pontosDisplay = document.getElementById('pontos') // Criando a constante de pontos
 const width = 40 // Definindo a quantidade de colunas
 let pontos = 0 // Declarando os pontos sendo zero
 const game = document.querySelector('.game') // Selecionando o primeiro elemento DOM de um seletor CSS especificado
 
+// Layout do tabuleiro (0 - pac-dots, 1 - parede, 2 - covil dos fantasmas, 3 - power-pellet, 4 - espaço vazio)
 const layout = [
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
@@ -32,15 +34,16 @@ const layout = [
     1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
     1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-] // Layout criado com 40 colunas (40x40)
-
-// 0 - pac-dots (pontos)
-// 1 - parede
-// 2 - covil dos fantasmas
-// 3 - power-pellet (circulos maiores que deixam fantasmas vulneráveis)
-// 4 - espaço vazio
+] 
 
 const quadrados = [] // Definindo a constante quadrado e criando um array vazio
+
+// Localização inicial do Pac-Man
+let pmInicio = 700;
+// Direção que irá seguir (0: parado, 1: esquerda, 2: cima, 3: direita, 4: baixo)
+let pmDirecao;
+// ID do intervalo para movimento contínuo
+let pmIntervalId;
 
 // Criando o tabuleiro
 function createTabu() {
@@ -65,94 +68,8 @@ function createTabu() {
         } // Se no layout for 3, será um power-pellet
     }
 }
+
 createTabu() // Chamando a função para construir o tabuleiro
-
-// Criando personagens
-// Desenhando o Pac-Man dentro do tabuleiro
-let pmInicio = 700 // Localização inicial do Pac-Man
-quadrados[pmInicio].classList.add("pac-man") // Mostrando o Pac-Man visualmente
-
-// Movendo o Pac-Man
-function mvPM(event) {
-    quadrados[pmInicio].classList.remove("pac-man") // Remove a classe para "desaparecer" da posição antiga
-    // Trocando a tecla no evento. Retornando uma string como "ArrowUp", "ArrowDown", "ArrowLeft" ou "ArrowRight"
-    switch (event.key) {
-        case 'ArrowLeft': // Caso pressionar a seta da esquerda
-            if (
-                pmInicio % width !== 0 && // Analisa se não está encostado na borda esquerda
-                !quadrados[pmInicio - 1].classList.contains("parede") && // Verifica se a célula à esquerda não é parede, para não poder atravessar
-                !quadrados[pmInicio - 1].classList.contains("covil-fantasma") // Verifica se a célula à esquerda não é o covil, onde não pode entrar
-            ) {
-                pmInicio -= 1 // Se todas forem verdade, move-se para esquerda
-            }
-            if ((pmInicio - 1) === 360) {
-                pmInicio = 400;  // Se teletransporta de esquerda para direita
-            }
-            break
-        case "ArrowUp":
-            if (
-                pmInicio - width >= 0 && // Analisa se não está encostado na borda superior
-                !quadrados[pmInicio - width].classList.contains("parede") && // Verifica se a célula de cima não é parede, para não poder atravessar
-                !quadrados[pmInicio - width].classList.contains("covil-fantasma") // Verifica se a célula de cima não é o covil, onde não pode entrar
-            ) {
-                pmInicio -= width // Se todas forem verdade, move-se para cima
-            }
-            break
-        case "ArrowRight":
-            if (
-                pmInicio % width < width - 1 && // Analisa se não está encostado na borda direita
-                !quadrados[pmInicio + 1].classList.contains("parede") && // Verifica se a célula à direita não é parede, para não poder atravessar
-                !quadrados[pmInicio + 1].classList.contains("covil-fantasma") // Verifica se a célula à direita não é o covil, onde não pode entrar
-            ) {
-                pmInicio += 1 // Se todas forem verdade, move-se para direita
-            }
-            if ((pmInicio + 1) === 400) {
-                pmInicio = 360; // Se teletransporta da direita para esquerda
-            }
-            break
-        case "ArrowDown":
-            if (
-                pmInicio + width < width * width && // Analisa se não está encostado na borda inferior
-                !quadrados[pmInicio + width].classList.contains("parede") && // Verifica se a célula de baixo não é parede, para não poder atravessar
-                !quadrados[pmInicio + width].classList.contains("covil-fantasma") // Verifica se a célula de baixo não é o covil, onde não pode entrar
-            ) {
-                pmInicio += width
-            }
-            break
-    }
-    quadrados[pmInicio].classList.add("pac-man")
-    comePD()
-    comePP()
-    olhaGO()
-    olhaVT()
-}
-
-document.addEventListener("keyup", mvPM)
-
-// Comendo o pac-dot
-function comePD() {
-    if (quadrados[pmInicio].classList.contains("pac-dot")) {
-        pontos++ // Aumenta os pontos
-        pontosDisplay.innerHTML = pontos // Substitui pelo novo valor
-        quadrados[pmInicio].classList.remove("pac-dot") // Remove os pac-dots
-    }
-}
-
-// Comendo os power-pellet
-function comePP() {
-    if (quadrados[pmInicio].classList.contains("power-pellet")) {
-        pontos += 10 // Aumenta +10 pontos
-        pontosDisplay.innerHTML = pontos // Substitui pelo novo valor
-        fantasmas.forEach(fantasmas => fantasmas.taAssustado = true) // Verifica se a o fantasma vai estar assustado
-        setTimeout(nAssustaFantasma, 10000) // Tempo para que o fantasma volte ao normal
-        quadrados[pmInicio].classList.remove("power-pellet") // Remove os power-pellet
-    }
-}
-
-// Fazendo os fantasmas ficarem assutados
-function nAssustaFantasma() {
-    fantasmas.forEach(fantasmas => fantasmas.taAssustado = false)
-}
 
 // Criando os fantasmas usando constructor
 // Classe Fantasma
@@ -169,69 +86,216 @@ class Fantasma {
 }
 
 // Todos os fantasmas
-// Adicionando eles usando a class fantasma
 const fantasmas = [
     new Fantasma("shadow", 582, 250),
     new Fantasma("speedy", 580, 400),
     new Fantasma("bashful", 497, 300),
     new Fantasma("pokey", 502, 500),
-]
+];
 
-// Desenhando os fantasmas dentro do tabuleiro
-fantasmas.forEach(fantasma => quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma"))
+// Função de para iniciar o jogo, podendo reiniciar após vitória ou derrota
+function iniciaJogo() {
+    // Limpa o tabuleiro e reseta as variáveis
+    pontos = 0;
+    pontosDisplay.innerHTML = pontos;
+    pmInicio = 700;
+    pmDirecao = 0;
+    clearInterval(pmIntervalId) ; // Limpa qualquer movimento anterior
 
-// Movendo eles aleatoriamente
-fantasmas.forEach(fantasma => moverFantasma(fantasma))
+    createTabu(); // Cria novamente o tabuleiro
 
-// Criando função andaFantasma
+    // Desenha o Pac-Man
+    quadrados[pmInicio].classList.add("pac-man");
+
+    // Reinciandos os fantasmas
+    fantasmas.forEach(function(fantasma) {
+        clearInterval(fantasma.timerId); // Limpa o timer anterior
+        fantasma.atualPosi = fantasma.fmInicio; // Recoloca na posição inicial
+        fantasma.taAssustado = false; // Recoloca o fantasma no estado normal
+        // Removendo toda as classe fantasma das posições antes de adionar na posição inicial
+        for (let i = 0; i < quadrados.length; i++) {
+            quadrados[i].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado");
+        }
+        quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma");
+        moverFantasma(fantasma); // Inicia o movimento dos fantasmas novamente
+    });
+}
+
+// Movendo o Pac-Man
+function mvPM() {
+    let proximaPosi = pmInicio;
+
+    // Calcula a próxima posição baseado na direção atual
+    if (pmDirecao === 1) {
+        proximaPosi = pmInicio - 1; // Move-se para esquerda
+        // Altera da borda esquerda para borda direita
+        if (pmInicio % whidh === 0) {
+            proximaPosi = pmInicio + width - 1;
+        }
+    }
+
+    else if (pmDirecao === 2) {
+        proximaPosi = pmInicio - width; // Move-se para cima
+    }
+
+    else if (pmDirecao === 3) {
+        proximaPosi = pmInicio + 1; // Move-se para direita
+        // Altera da borda direita para borda esquerda
+        if ((pmInicio + 1) % width === 0) {
+            proximaPosi = pmInicio - width + 1;
+        }
+    }
+
+    else if (pmDirecao === 4) {
+        proximaPosi = pmInicio + width; // Move-se para baixo
+    }
+
+    // Verificando se a próxima posição é válida, não sendo parede ou o covil dos fantasmas
+    // E adicionando verificação para garantir que a próxima posição está dentro do limite do array
+    if (
+        pmDirecao !== 0 && //Se não estiver parado
+        proximaPosi >= 0 && proximaPosi < quadrados.length && // Garantindo se a posição é válida
+        !quadrados[proximaPosi].classList.contains("parede") &&
+        !quadrados[proximaPosi].classList.contains("covil-fantasma")
+    ) {
+        // Removendo a classe da posição antiga
+        quadrados[pmInicio].classList.remove("pac-man");
+        // Atualizando a posição
+        pmInicio = proximaPosi;
+        // Adicionando a classe da nova posição
+        quadrados[pmInicio].classList.add("pac-man");
+        
+        comePD();
+        comePP();
+        olhaGO();
+        olhaVT();
+    }
+
+    else if (pmDirecao !== 0) {
+        // Se não alterar o movimento atual, para o movimento contínuo
+        clearInterval(pmIntervalId);
+        pmDirecao = 0; // Define a direção como nula
+    }
+}
+
+// Função para iniciar ou alterar o movimento contínuo
+function inMov(nwDire) {
+    if (pmDirecao === nwDire && pmIntervalId) {
+        return; // Já está se movendo na mesma direção
+    }
+    pmDirecao = nwDire;
+    clearInterval(pmIntervalId); // Limpa o intervalo anterior
+    pmIntervalId = setInterval(mvPM, 180); // Inicia o movimento contínuo com velocidade de 180
+}
+
+// Função para input do teclado
+function mvPMTeclado(event) {
+    switch (event.key) {
+        case 'ArrowLeft':
+            iniciarMovimento(1); // 1: irá para esquerda
+            break;
+        case 'ArrowUp':
+            iniciarMovimento(2); // 2: irá para cima
+            break;
+        case 'ArrowRight':
+            iniciarMovimento(3); // 3: irá para direita
+            break;
+        case 'ArrowDown':
+            iniciarMovimento(4); // 4: irá para baixo
+            break;
+    }
+}
+
+// Event Listener para as setas do teclado
+document.addEventListener("keydown", mvPMTeclado);
+
+// Função para comer o pac-dot
+function comePD() {
+    if (quadrados[pmInicio].classList.contains("pac-dot")) {
+        pontos++ // Aumenta os pontos
+        pontosDisplay.innerHTML = pontos // Substitui pelo novo valor
+        quadrados[pmInicio].classList.remove("pac-dot") // Remove os pac-dots
+    }
+}
+
+// Função para comer os power-pellet
+function comePP() {
+    if (quadrados[pmInicio].classList.contains("power-pellet")) {
+        pontos += 10; // Aumenta +10 pontos
+        pontosDisplay.innerHTML = pontos; // Substitui pelo novo valor
+        fantasmas.forEach(function(fantasma) { 
+            fantasma.taAssustado = true;
+        });
+        setTimeout(nAssustaFantasma, 10000); // Tempo para que o fantasma volte ao normal
+        quadrados[pmInicio].classList.remove("power-pellet"); // Remove os power-pellet
+    }
+}
+
+// Fazendo os fantasmas ficarem assustados
+function nAssustaFantasma() {
+    fantasmas.forEach(function(fantasma) {
+        fantasma.taAssustado = false;
+    });
+}
+
+// Movendo fantasmas aleatoriamente
 function moverFantasma(fantasma) {
-    const direcoes = [-1, 1, width, -width]
-    // Definindo uma direção inicial aletória
-    let direcao = direcoes[Math.floor(Math.random() * direcoes.length)]
-
+    const direcoes = [-1, 1, width, -width]; // Esquerda, Direita, Baixo, Cima
+    let direcao = direcoes[Math.floor(Math.random() * direcoes.length)];
 
     fantasma.timerId = setInterval(function () {
-        // Se o próximo quadrado que o fantasma for não tem fantasma e não é parede
-        if (
-            !quadrados[fantasma.atualPosi + direcao].classList.contains("parede") && // Verifica se a próxima posição do fantasma for em direção a parede
-            !quadrados[fantasma.atualPosi + direcao].classList.contains("fantasma") // E em direção à uma fantasma
-        ) {
-            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado")
-            fantasma.atualPosi += direcao
-            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma")
-        }
-        // Se não, procura uma nova direção aleatória para ir
-        else direcao = direcoes[Math.floor(Math.random() * direcoes.length)]
+        let proximaPosicaoFantasma = fantasma.atualPosi + direcao;
 
-        // Se o fantasmas estiver assustado
+        // Adicionado verificação para garantir que proximaPosicaoFantasma está no limites do array
+        if (proximaPosicaoFantasma < 0 || proximaPosicaoFantasma >= quadrados.length ||
+            quadrados[proximaPosicaoFantasma].classList.contains("parede") ||
+            quadrados[proximaPosicaoFantasma].classList.contains("fantasma")) {
+            // Se a próxima posição é inválida, uma parede ou outro fantasma, tenta uma nova direção
+            direcao = direcoes[Math.floor(Math.random() * direcoes.length)];
+            proximaPosicaoFantasma = fantasma.atualPosi + direcao; // Tenta a nova posição
+        }
+
+        // Se a nova direção ainda for a uma parede ou fantasma, o fantasma fica parado
+        if (proximaPosicaoFantasma >= 0 && proximaPosicaoFantasma < quadrados.length &&
+            !quadrados[proximaPosicaoFantasma].classList.contains("parede") &&
+            !quadrados[proximaPosicaoFantasma].classList.contains("fantasma")) {
+
+            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado");
+            fantasma.atualPosi = proximaPosicaoFantasma;
+            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma");
+        }
+
+        // Se o fantasma estiver assustado
         if (fantasma.taAssustado) {
-            quadrados[fantasma.atualPosi].classList.add("fantasma-assustado")
+            quadrados[fantasma.atualPosi].classList.add("fantasma-assustado");
         }
 
         // Se o fantasma estiver assustado e o Pac-Man estiver perto
         if (fantasma.taAssustado && quadrados[fantasma.atualPosi].classList.contains("pac-man")) {
-            fantasma.taAssustado = false
-            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado") // Se o Pac-Man passar pelo fantasma e ele estiver assustado
-            fantasma.atualPosi = fantasma.fmInicio // Retorna o fantasma para sua posição inicial
-            pontos += 100 // Adiciona mais 100 pontos ao jogador
-            pontosDisplay.innerHTML = pontos // Altera a quantidade de pontos
-            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma") // Recoloca o fantasma para andar pelo mapa
+            fantasma.taAssustado = false;
+            quadrados[fantasma.atualPosi].classList.remove(fantasma.nomeClasse, "fantasma", "fantasma-assustado");
+            fantasma.atualPosi = fantasma.fmInicio; // Retorna o fantasma para sua posição inicial
+            pontos += 100; // Adiciona mais 100 pontos ao jogador
+            pontosDisplay.innerHTML = pontos; // Altera a quantidade de pontos
+            quadrados[fantasma.atualPosi].classList.add(fantasma.nomeClasse, "fantasma"); // Recoloca o fantasma para se movimentar
         }
-        olhaGO()
-    }, fantasma.velocidade)
+        olhaGO();
+    }, fantasma.velocidade);
 }
 
 // Olhando se houve Game Over
-
 function olhaGO() {
     if (
         quadrados[pmInicio].classList.contains("fantasma") &&
         !quadrados[pmInicio].classList.contains("fantasma-assustado")) {
-        fantasmas.forEach(fantasma => clearInterval(fantasma.timerId))
-        document.removeEventListener("keyup", mvPM)
+        fantasmas.forEach(function(fantasma) {
+            clearInterval(fantasma.timerId);
+        });
+        clearInterval(pmIntervalId); // Para o movimento do Pac-Man
         setTimeout(function () {
-            alert("Game Over")
-        }, 500)
+            alert("Game Over");
+            startGame(); // Reinicia o jogo após o Game Over
+        }, 500);
     }
 }
 
@@ -239,10 +303,16 @@ function olhaGO() {
 function olhaVT() {
     // Coloando uma quantidade de pontos aleatória (pode alterar)
     if (pontos >= 400) {
-        fantasmas.forEach(fantasma => clearInterval(fantasma.timerId))
-        document.removeEventListener("keyup", mvPM)
+        fantasmas.forEach(function(fantasma) { // Alterado de arrow function para função tradicional
+            clearInterval(fantasma.timerId);
+        });
+        clearInterval(pmIntervalId); // Para o movimento do Pac-Man
         setTimeout(function () {
-            alert("Você Ganhou!!!")
-        }, 500)
+            alert("Você Ganhou!!!");
+            startGame(); // Reinicia o jogo após a vitória
+        }, 500);
     }
 }
+
+// Inicia o jogo quando a página carrega
+window.onload = startGame;
