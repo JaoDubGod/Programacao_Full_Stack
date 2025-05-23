@@ -21,6 +21,7 @@ body {
 p {
     max-width: 600px;
     word-wrap: break-word;
+    font-size: 20px;
 }
 
 /* Alinhando botões */
