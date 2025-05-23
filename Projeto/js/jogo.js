@@ -75,6 +75,7 @@ createTabu() // Chamando a função para construir o tabuleiro
 // Classe Fantasma
 class Fantasma {
     // Método especial que é chamado automaticamente quando cria um novo objeto
+    // Inicializa as propriedades do objeto recém-criado
     constructor(nomeClasse, fmInicio, velocidade) {
         this.nomeClasse = nomeClasse
         this.fmInicio = fmInicio
