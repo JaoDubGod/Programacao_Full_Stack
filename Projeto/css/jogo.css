@@ -13,6 +13,10 @@ h3 {
     padding: 0;
 }
 
+.ponto {
+    margin-top: -140px;
+}
+
 /* Alinhando botões */
 .botao {
     display: flex;
