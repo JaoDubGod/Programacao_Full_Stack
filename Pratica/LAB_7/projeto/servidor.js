@@ -5,7 +5,7 @@ var bodyParser = require("body-parser")
 var mongodb = require("mongodb");
 
 const MongoClient = mongodb.MongoClient;
-const uri = `mongodb+srv://unifjmonti:nz8O81cuNndA6inz@cluster0.xiesfe6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = ``;
 const client = new MongoClient(uri);
 
 var dbo = client.db("exemplo_bd");
