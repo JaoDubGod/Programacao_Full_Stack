@@ -51,7 +51,7 @@ function createTabu() {
     for (let i = 0; i < layout.length; i++) {
         const quadrado = document.createElement('div') // Criando a div que representa uma célula no tabuleiro
         game.appendChild(quadrado) // Colocando o quadrado (square) dentro da grade (game)
-        quadrados.push(quadrado) // Adicionando um item no finao do array
+        quadrados.push(quadrado) // Adicionando um item no final do array
 
         // Adicionando o layout para o tabuleiro
         if (layout[i] === 0) {
