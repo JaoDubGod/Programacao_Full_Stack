@@ -18,13 +18,6 @@ body {
     margin: 20px;
 }
 
-#desenFoto {
-    border-radius: 20px;
-    height: 250px;
-    margin: 20px;
-    margin-right: 40px;
-}
-
 p {
     max-width: 600px;
     word-wrap: break-word;
