@@ -17,14 +17,12 @@ h3 {
     margin-top: -140px;
 }
 
-/* Alinhando botões */
 .botao {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
-/* Estilizando botões */
 a.bta {
     display: inline-block;
     padding: 20px 25px;
@@ -36,15 +34,12 @@ a.bta {
     text-align: center;
 }
 
-/* Alterando a cor ao passar o mouse */
 a.bta:hover {
     background-color: grey;
 }
 
 /* Estilo para o canvas */
 #gameCanvas {
-    width: 800px;   /* mesmo tamanho da antiga .game */
-    height: 800px;  
-    border: 2px solid wheat;
-    background-color: #111; /* fundo escuro para destacar o jogo */
+    border: 2px solid white;
+    background-color: black;
 }
