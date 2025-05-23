@@ -303,7 +303,7 @@ function olhaGO() {
 // Olhando se houve vitória
 function olhaVT() {
     // Coloando uma quantidade de pontos aleatória (pode alterar)
-    if (pontos >= 400) {
+    if (pontos >= 150) {
         fantasmas.forEach(function(fantasma) { // Alterado de arrow function para função tradicional
             clearInterval(fantasma.timerId);
         });
